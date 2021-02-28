@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  href="css/lod.css" rel="stylesheet">
+    <link  href="css/print.css" rel="stylesheet">
+    <title>Language Of Dance - Score Creator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Language Of Dance Notation - Score Creator</h1>
+            <div id="notation_Area">
+                <section id="symbols_and_buttons">
+                    <h2>Symbols</h2>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/travelling.jpg" alt="Travelling Symbol" height="150">
+                        <div class="options">
+                            <p>Run</p>
+                            <p>Walk</p>
+                            <p>Gallop</p>
+                            <p>Skip</p>
+                            <p>Glide</p>
+                        </div>
+                        <p class="symbol_Name">Travelling</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/rotation.jpg" alt="Rotation Symbol" height="150">
+                        <div class="options">
+                            <p>Turn CW</p>
+                            <p>Turn C - CW</p>
+                            <p>Cartwheel</p>
+                            <p>Somersault</p>
+                            <p>Log Roll</p>
+                        </div>
+                        <p class="symbol_Name">Rotation</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/bodyshape.jpg" alt="Body Shape Symbol" height="150">
+                        <div class="options">
+                            <p>No Options</p>
+                        </div>
+                        <p class="symbol_Name">Body Shape</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/stillness.jpg" alt="Stillness Symbol" height="150">
+                        <div class="options">
+                            <p>No Options</p>
+                        </div>
+                        <p class="symbol_Name">Stillness</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/balance.jpg" alt="Balance Symbol" height="150">
+                        <div class="options">
+                            <p>1 Body Part</p>
+                            <p>2 Body Parts</p>
+                            <p>3 Body Parts</p>
+                            <p>4 Body Parts</p>
+                        </div>
+                        <p class="symbol_Name">Balance</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/flexion.jpg" alt="Flexion Symbol" height="150">
+                        <div class="options">
+                            <p>Full Body</p>
+                            <p>1 Limb</p>
+                            <p>2 Limbs</p>
+                        </div>
+                        <p class="symbol_Name">Flexion</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/fall.jpg" alt="Fall Symbol" height="150">
+                        <div class="options">
+                            <p>No Options</p>
+                        </div>
+                        <p class="symbol_Name">Fall</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/extension.jpg" alt="Extension Symbol" height="150">
+                        <div class="options">
+                            <p>Full Body</p>
+                            <p>1 Limb</p>
+                            <p>2 Limbs</p>
+                        </div>
+                        <p class="symbol_Name">Extension</p>
+                    </div>
+                    <div class="symbol">
+                        <img src="images/symbol_buttons/spring.jpg" alt="Spring Symbol" height="150">
+                        <div class="options">
+                            <p>Hop</p>
+                            <p>Leap</p>
+                            <p>Jump</p>
+                            <p>Assemble</p>
+                            <p>Sissone</p>
+                        </div>
+                        <p class="symbol_Name">Spring</p>
+                    </div>
+
+                    <div id="btns_Options">
+                        <div id="advanced_Checkbox">
+                            <div id="cover"></div>
+                            <input type="checkbox" id="checkbox_Input">
+                            <label for="checkbox_Input"></label>
+                        </div>
+                        <button type="button" class="app_Btn" id="print_Btn">Print</button>
+                        <button type="button" class="app_Btn" id="finish_Btn">Finish</button>
+                    </div>
+                    <button type="button" class="start_Btn">Start</button>
+                </section>
+                <section id="score_Area">
+                    <h2>Score</h2>
+                    <div id="the_Score">
+                        <div id="symbol_Container">
+                        </div>
+                    </div>
+                </section>
+            </div>
+    </main>
+    <div id="printed_Score_Container">
+        <div id="printed_Score"></div>
+    </div>
+    <script src="scripts/javascript.js"></script>
+</body>
+</html>
