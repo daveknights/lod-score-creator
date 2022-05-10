@@ -75,12 +75,12 @@ function App() {
                 case 4:
                 case 9:
                 case 14:
-                  topContinue = <img className={`continue-symbol continue-top continue-${index}`} src="../images/end_symbols/continue.png" alt="continue" height="20" width="120" />
+                  topContinue = <img className={`continue-symbol continue-top continue-${index}`} src="https://daveknights.github.io/lod-score-creator/images/end_symbols/continue.png" alt="continue" height="20" width="120" />
                   break;
                 case 5:
                 case 10:
                 case 15:
-                  bottomContinue = <img className={`continue-symbol continue-btm continue-${index}`} src="../images/end_symbols/continue.png" alt="continue" height="20" width="120" />
+                  bottomContinue = <img className={`continue-symbol continue-btm continue-${index}`} src="https://daveknights.github.io/lod-score-creator/images/end_symbols/continue.png" alt="continue" height="20" width="120" />
                   break;
                 default:
                   topContinue = null;
