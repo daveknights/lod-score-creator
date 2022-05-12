@@ -1,11 +1,5 @@
-@font-face {
-  font-family: "HutchinsonGuest";
-  src: url('../public/font/HutchinsonGuest.woff2') format('woff2');
-  /* url("../font/HutchinsonGuest.woff") format("woff"); */
-  font-display: swap;
-  text-rendering: optimizeLegibility;
-  font-style: normal;
-  font-weight: normal;  
+.hg-font {
+  font-family: 'HutchinsonGuest';
 }
 
 * {
@@ -72,13 +66,6 @@ p {
 .btn-char-symbol p {
   font-size: 4rem;
   line-height: 92px; 
-}
-
-.btn-char-symbol p,
-.score-symbol p,
-.start-symbol p,
-.end-symbol p {
-  font-family: 'HutchinsonGuest';
 }
 
 .btn-name {
