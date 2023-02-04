@@ -30,11 +30,6 @@ p {
   margin: 0;
 }
 
-/* .app-controls {
-  display: flex;
-  flex-direction: column;
-} */
-
 .symbol-choice-container {
   width: 297px;
 }
@@ -54,18 +49,18 @@ p {
   margin-top: 20px;
 }
 
-.buttons button {  
+.buttons button {
   width: calc(33.3333% - 1px);
 }
 
 .btn-char-symbol {
-  background: white;  
-  height: 80px;  
+  background: white;
+  height: 80px;
 }
 
 .btn-char-symbol p {
   font-size: 4rem;
-  line-height: 92px; 
+  line-height: 92px;
 }
 
 .btn-name {
@@ -85,8 +80,13 @@ p {
   border: solid 1px black;
   height: 640px;
   margin-left: auto;
-  position: relative;
   width: 480px;
+}
+
+.pdf-container {
+  height: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .score > img {
@@ -98,7 +98,7 @@ p {
 .end-symbol {
   display: flex;
   flex-direction: column;
-  height: 20px;  
+  height: 20px;
   justify-content: flex-end;
   position: absolute;
   width: 120px;
@@ -108,7 +108,7 @@ p {
 .end-symbol p {
   font-size: 11rem;
   line-height: 78px;
-  text-align: center;    
+  text-align: center;
 }
 
 .score-symbol {
@@ -128,7 +128,8 @@ p {
 .end-symbol,
 .continue-symbol,
 .score-symbol {
-  background: white;  
+  background: white;
+  position: absolute;
 }
 .start-symbol,
 .continue-btm {
@@ -140,10 +141,10 @@ p {
 }
 .start-symbol,
 .continue-4 {
-  left: 0;  
+  left: 0;
 }
 .continue-5,
-.continue-9 {  
+.continue-9 {
   left: 120px;
 }
 .continue-10,
@@ -188,7 +189,7 @@ p {
 .pos-5,
 .pos-10,
 .pos-15 {
-  bottom: 20px;  
+  bottom: 20px;
 }
 .pos-1,
 .pos-6,
@@ -215,20 +216,18 @@ p {
   bottom: 500px;
 }
 
-.options {
+.remove-symbol {
   background: #f7f7f7;
   color: #10dc;
   cursor: pointer;
   display: none;
-  height: 15px;
-  line-height: 5px;
-  padding: 0 5px;
+  padding: 3px 5px;
   position: absolute;
-  right: 2px;
-  top: 3px;
+  right: 1px;
+  top: 0;
 }
 
-.score-symbol:hover .options {
+.score-symbol:hover .remove-symbol {
   display: block;
 }
 
