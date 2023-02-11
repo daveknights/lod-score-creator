@@ -159,7 +159,7 @@ const App = () => {
                         </Fragment>;
               })
             }
-            {endScore === true && <Symbol class={`flex column end-symbol${endSymbolPosition}`} character="=" />}
+            {endScore === true && <span className={`flex column end-symbol${endSymbolPosition}`}></span>}
             {message && <Message message={message} handleCancel={handleCancel} />}
           </div>
         </div>
