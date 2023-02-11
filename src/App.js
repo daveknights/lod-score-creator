@@ -26,7 +26,7 @@ const App = () => {
   const score = useRef(null);
 
   const finishScoreHandler = useCallback(() => {
-    setEndSymbolPosition(` pos-${scoreSymbols.length}`);
+    setEndSymbolPosition(` pos-${Object.keys(scoreSymbols).length}`);
     setEndScore(true);
   }, [scoreSymbols]);
 
