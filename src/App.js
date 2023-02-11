@@ -88,7 +88,7 @@ const App = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
 
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
     pdf.save('lod_score.pdf');
   };
 
