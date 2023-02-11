@@ -26,12 +26,15 @@ const App = () => {
   const score = useRef(null);
 
   const finishScoreHandler = useCallback(() => {
-    setEndSymbolPosition(` pos-${Object.keys(scoreSymbols).length}`);
+    const symbolLength = Object.keys(scoreSymbols).length;
+    const endPos = Object.keys(scoreSymbols).length % 8 === 0 ? symbolLength - 1 : symbolLength;
+
+    setEndSymbolPosition(` pos-${endPos}`);
     setEndScore(true);
   }, [scoreSymbols]);
 
   useEffect(() => {
-    if (Object.keys(scoreSymbols).length === 20) {
+    if (Object.keys(scoreSymbols).length === 32) {
       finishScoreHandler();
     }
   }, [scoreSymbols, finishScoreHandler]);
@@ -129,9 +132,9 @@ const App = () => {
                 let bottomContinue;
 
                 switch (index) {
-                  case 5:
-                  case 10:
-                  case 15:
+                  case 8:
+                  case 16:
+                  case 24:
                     topContinue = <span className={`continue-symbol flex flex-center continue-top continue-${index}`}></span>
                     bottomContinue = <span className={`continue-symbol flex flex-center continue-btm continue-${index+1}`}></span>
                     break;

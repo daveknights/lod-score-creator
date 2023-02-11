@@ -130,11 +130,6 @@ p {
   width: 100%;
 }
 
-.score > img {
-  display: block;
-  position: absolute;
-}
-
 .start-symbol,
 .end-symbol {
   height: 20px;
@@ -166,7 +161,7 @@ p {
 }
 
 .score-symbol {
-  height: 120px;
+  height: 75px;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -174,8 +169,8 @@ p {
 }
 
 .score-symbol p {
-  font-size: 6rem;
-  line-height: 140px;
+  font-size: 5rem;
+  line-height: 92px;
 }
 
 .continue-symbol {
@@ -204,86 +199,119 @@ p {
 .continue-btm {
   bottom: 0;
 }
-.end-symbol,
 .continue-top {
   bottom: 620px;
 }
 .start-symbol,
-.continue-5 {
+.continue-8 {
   left: 0;
 }
-.continue-6,
-.continue-10 {
+.continue-9,
+.continue-16 {
   left: 120px;
 }
-.continue-11,
-.continue-15 {
+.continue-17,
+.continue-24 {
   left: 240px;
 }
-.end-symbol,
-.continue-16 {
+.continue-25 {
   left: 360px;
 }
-
 .pos-0,
 .pos-1,
 .pos-2,
 .pos-3,
-.pos-4 {
-  left: 0;
-}
+.pos-4,
 .pos-5,
 .pos-6,
-.pos-7,
-.pos-8,
-.pos-9 {
-  left: 120px;
+.pos-7 {
+  left: 0;
 }
+.pos-8,
+.pos-9,
 .pos-10,
 .pos-11,
 .pos-12,
 .pos-13,
-.pos-14 {
-  left: 240px;
+.pos-14,
+.pos-15 {
+  left: 120px;
 }
-.pos-15,
 .pos-16,
 .pos-17,
 .pos-18,
-.pos-19 {
+.pos-19,
+.pos-20,
+.pos-21,
+.pos-22,
+.pos-23 {
+  left: 240px;
+}
+.pos-24,
+.pos-25,
+.pos-26,
+.pos-27,
+.pos-28,
+.pos-29,
+.pos-30,
+.pos-31 {
   left: 360px;
 }
-
 .pos-0,
-.pos-5,
-.pos-10,
-.pos-15 {
+.pos-8,
+.pos-16,
+.pos-24 {
   bottom: 20px;
 }
 .pos-1,
-.pos-6,
-.pos-11,
-.pos-16 {
-  bottom: 140px;
+.pos-9,
+.pos-17,
+.pos-25 {
+  bottom: 95px;
 }
 .pos-2,
-.pos-7,
-.pos-12,
-.pos-17 {
-  bottom: 260px;
+.pos-10,
+.pos-18,
+.pos-26 {
+  bottom: 170px;
 }
 .pos-3,
-.pos-8,
-.pos-13,
-.pos-18 {
-  bottom: 380px;
+.pos-11,
+.pos-19,
+.pos-27 {
+  bottom: 245px;
 }
 .pos-4,
-.pos-9,
-.pos-14,
-.pos-19 {
-  bottom: 500px;
+.pos-12,
+.pos-20,
+.pos-28 {
+  bottom: 320px;
 }
+.pos-5,
+.pos-13,
+.pos-21,
+.pos-29 {
+  bottom: 395px;
+}
+.pos-6,
+.pos-14,
+.pos-22,
+.pos-30 {
+  bottom: 470px;
+}
+.pos-7,
+.pos-15,
+.pos-23,
+.pos-31 {
+  bottom: 545px;
+}
+.end-symbol.pos-7,
+.end-symbol.pos-15,
+.end-symbol.pos-23,
+.end-symbol.pos-31 {
+  bottom: 620px;
+}
+
 
 .swap-symbol,
 .remove-symbol {
