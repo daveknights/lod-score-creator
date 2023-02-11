@@ -3,6 +3,7 @@
 }
 
 * {
+  box-sizing: border-box;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -13,7 +14,6 @@ header {
 }
 
 main {
-  display: flex;
   margin: 0 auto;
   max-width: 790px;
 }
@@ -26,8 +26,50 @@ button {
   cursor: pointer;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 p {
   margin: 0;
+}
+
+.flex {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -o-display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display:-webkit-flex;
+  display: flex;
+}
+
+.flex-center {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align:center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.column {
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
 }
 
 .symbol-choice-container {
@@ -44,7 +86,6 @@ p {
 }
 
 .buttons {
-  display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
@@ -78,9 +119,9 @@ p {
 .score {
   background: #efefef;
   border: solid 1px black;
-  height: 640px;
+  height: 642px;
   margin-left: auto;
-  width: 480px;
+  width: 482px;
 }
 
 .pdf-container {
@@ -96,25 +137,38 @@ p {
 
 .start-symbol,
 .end-symbol {
-  display: flex;
-  flex-direction: column;
   height: 20px;
-  justify-content: flex-end;
   position: absolute;
   width: 120px;
 }
 
-.start-symbol p,
-.end-symbol p {
-  font-size: 11rem;
-  line-height: 78px;
-  text-align: center;
+.start-symbol::before,
+.end-symbol::before,
+.start-symbol::after,
+.end-symbol::after {
+  background: black;
+  content: '';
+  display: block;
+  height: 2px;
+  left: 10px;
+  position: absolute;
+  width: 100px;
+}
+
+.start-symbol::before,
+.end-symbol::before {
+  top: 6px;
+}
+
+.start-symbol::after,
+.end-symbol::after {
+  bottom: 5px;
 }
 
 .score-symbol {
   height: 120px;
   overflow: hidden;
-  position: absolute;
+  position: relative;
   text-align: center;
   width: 120px;
 }
@@ -122,6 +176,21 @@ p {
 .score-symbol p {
   font-size: 6rem;
   line-height: 140px;
+}
+
+.continue-symbol {
+  align-items: center;
+  height: 20px;
+  justify-content: center;
+  width: 120px;
+}
+
+.continue-symbol::after {
+  background: black;
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100px;
 }
 
 .start-symbol,
@@ -216,19 +285,81 @@ p {
   bottom: 500px;
 }
 
+.swap-symbol,
 .remove-symbol {
   background: #f7f7f7;
   color: #10dc;
   cursor: pointer;
   display: none;
+  height: 26px;
   padding: 3px 5px;
   position: absolute;
-  right: 1px;
   top: 0;
+}
+
+.swap-symbol:hover,
+.remove-symbol:hover {
+  background: #10dc;
+  color: #f7f7f7;
+}
+
+.swap-symbol {
+  font-size: 14px;
+  left: 1px;
+  line-height: 10px;
+}
+
+.remove-symbol {
+  line-height: 20px;
+  right: 1px;
+}
+
+.score-symbol:hover .swap-symbol {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -o-display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display:-webkit-flex;
+  display: flex;
 }
 
 .score-symbol:hover .remove-symbol {
   display: block;
+}
+
+.message {
+  animation: fadeIn 0.5s forwards;
+  background: #10dc;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px #777;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+  opacity: 0;
+  padding: 10px 16px 12px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.message p {
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.message span {
+  border-left: solid 1px white;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
 }
 
 @supports (display: grid) {

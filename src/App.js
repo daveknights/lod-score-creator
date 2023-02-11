@@ -1,8 +1,9 @@
 import { Fragment, useCallback, useEffect, useState, useRef } from 'react';
-import './App.css';
-import Symbol from './Symbol';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import './App.css';
+import Symbol from './Symbol';
+import Message from './Message';
 
 const symbols = {
   1: 'Spring',
@@ -17,16 +18,15 @@ const symbols = {
 };
 
 const App = () => {
-  const [startScore, setStartScore] = useState(false);
   const [endScore, setEndScore] = useState(false);
   const [endSymbolPosition, setEndSymbolPosition] = useState(null);
   const [scoreSymbols, setScoreSymbols] = useState({});
+  const [swapKey, setSwapKey] = useState(null);
+  const [message, setMessage] = useState('');
   const score = useRef(null);
 
-  useEffect(() => setStartScore(true), []);
-
   const finishScoreHandler = useCallback(() => {
-    setEndSymbolPosition(` pos-${Object.keys(scoreSymbols).length}`);
+    setEndSymbolPosition(` pos-${scoreSymbols.length}`);
     setEndScore(true);
   }, [scoreSymbols]);
 
@@ -43,25 +43,44 @@ const App = () => {
 
     const name = e.currentTarget.querySelector('.btn-name').textContent;
     const char = e.currentTarget.querySelector(`.${name}`).textContent;
+    let key;
 
-    setScoreSymbols(currentSymbols => ({...currentSymbols, [`${name.toLowerCase()}-pos-${Object.keys(scoreSymbols).length}`]: {
-      name: name,
-      char: char
-    }}));
+    if(swapKey) {
+      key = swapKey
+      setSwapKey(null);
+      setMessage('');
+    } else {
+      key = [`${name.toLowerCase()}-pos-${Object.keys(scoreSymbols).length}`];
+    }
+
+      setScoreSymbols(currentSymbols => ({...currentSymbols,
+        [key]: {
+          name: name,
+          char: char
+        }
+      }));
+  };
+
+  const handleSwapSymbol =  e => {
+    setMessage('Choose a new symbol');
+    setSwapKey(e.target.parentNode.parentNode.id);
   };
 
   const handleRemoveSymbol = e => {
     const symbolToRemove = e.target.parentNode.id;
+
     setScoreSymbols(currentSymbols => {
       const updatedScoreSymbol = {...currentSymbols};
 
       delete updatedScoreSymbol[symbolToRemove];
 
       return updatedScoreSymbol;
-    })
+    });
   };
 
   const handleSaveToPdf = async () => {
+    finishScoreHandler();
+
     const canvas = await html2canvas(score.current);
     const data = canvas.toDataURL('image/png');
     const pdf = new jsPDF();
@@ -69,24 +88,27 @@ const App = () => {
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
 
-    finishScoreHandler();
-
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save('lod_score.pdf');
   };
 
   const handleClearScore = () => {
-    setScoreSymbols({});
+    setScoreSymbols([]);
     setEndSymbolPosition(null);
     setEndScore(false);
   };
+
+  const handleCancel = () => {
+    setMessage('');
+    setSwapKey(null);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
           <h1>Language Of Dance Score Creator</h1>
       </header>
-      <main>
+      <main className="flex">
         <section className="app-controls">
           <div className="symbol-choice-container">
             {Object.entries(symbols).map(([char, symbol]) => <figure className="symbol-btn" key={symbol} onClick={addSymbol}>
@@ -94,15 +116,15 @@ const App = () => {
                                     <figcaption className='btn-name'>{symbol}</figcaption>
                                   </figure>)}
           </div>
-          <div className="buttons">
-              <button onClick={handleSaveToPdf}>Save PDF</button>
+          <div className="buttons flex">
+              <button onClick={handleSaveToPdf} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
               <button onClick={handleClearScore}>Clear</button>
             </div>
         </section>
         <div className="score">
-          <div className="pdf-container" ref={score}>
-            {startScore === true && <Symbol class="start-symbol" character="=" />}
-            {Object.entries(scoreSymbols).map(([key, symbol], index) => {
+          <div className="pdf-container flex" ref={score}>
+              <span className="start-symbol flex"></span>
+              {Object.entries(scoreSymbols).map(([key,symbol], index) => {
                 let topContinue;
                 let bottomContinue;
 
@@ -110,12 +132,12 @@ const App = () => {
                   case 4:
                   case 9:
                   case 14:
-                    topContinue = <img className={`continue-symbol continue-top continue-${index}`} src="https://daveknights.github.io/lod-score-creator/images/end_symbols/continue.png" alt="continue" height="20" width="120" />
+                    topContinue = <span className={`continue-symbol flex flex-center continue-top continue-${index}`}></span>
                     break;
                   case 5:
                   case 10:
                   case 15:
-                    bottomContinue = <img className={`continue-symbol continue-btm continue-${index}`} src="https://daveknights.github.io/lod-score-creator/images/end_symbols/continue.png" alt="continue" height="20" width="120" />
+                    bottomContinue = <span className={`continue-symbol flex flex-center continue-btm continue-${index}`}></span>
                     break;
                   default:
                     topContinue = null;
@@ -123,20 +145,22 @@ const App = () => {
                     break;
                 }
 
-                return <Fragment key={key}>
-                        {bottomContinue}
-                        <Symbol
-                          id={key}
-                          class={`score-symbol pos-${index}`}
-                          name={symbol.name}
-                          options={true}
-                          character={symbol.char}
-                          handleRemoveSymbol={handleRemoveSymbol} />
-                        {topContinue}
-                      </Fragment>;
+                return  <Fragment key={key}>
+                          {bottomContinue}
+                          <Symbol
+                            id={key}
+                            class={`score-symbol pos-${index}`}
+                            name={symbol.name}
+                            options={true}
+                            character={symbol.char}
+                            handleSwapSymbol={handleSwapSymbol}
+                            handleRemoveSymbol={handleRemoveSymbol} />
+                          {topContinue}
+                        </Fragment>;
               })
             }
-            {endScore === true && <Symbol class={`end-symbol${endSymbolPosition}`} character="=" />}
+            {endScore === true && <Symbol class={`flex column end-symbol${endSymbolPosition}`} character="=" />}
+            {message && <Message message={message} handleCancel={handleCancel} />}
           </div>
         </div>
       </main>
