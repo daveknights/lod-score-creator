@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/lod-score-creator/static/css/main.3f643540.css",
-    "main.js": "/lod-score-creator/static/js/main.60900bd3.js",
+    "main.css": "/lod-score-creator/static/css/main.d2b41c82.css",
+    "main.js": "/lod-score-creator/static/js/main.a2fd1bea.js",
+    "static/js/703.98a00107.chunk.js": "/lod-score-creator/static/js/703.98a00107.chunk.js",
+    "static/js/825.8b20fdf3.chunk.js": "/lod-score-creator/static/js/825.8b20fdf3.chunk.js",
     "static/media/HutchinsonGuest.woff2": "/lod-score-creator/static/media/HutchinsonGuest.2bfd53cc3bd550208e85.woff2",
     "index.html": "/lod-score-creator/index.html",
-    "main.3f643540.css.map": "/lod-score-creator/static/css/main.3f643540.css.map",
-    "main.60900bd3.js.map": "/lod-score-creator/static/js/main.60900bd3.js.map"
+    "main.d2b41c82.css.map": "/lod-score-creator/static/css/main.d2b41c82.css.map",
+    "main.a2fd1bea.js.map": "/lod-score-creator/static/js/main.a2fd1bea.js.map",
+    "703.98a00107.chunk.js.map": "/lod-score-creator/static/js/703.98a00107.chunk.js.map",
+    "825.8b20fdf3.chunk.js.map": "/lod-score-creator/static/js/825.8b20fdf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f643540.css",
-    "static/js/main.60900bd3.js"
+    "static/css/main.d2b41c82.css",
+    "static/js/main.a2fd1bea.js"
   ]
 }
