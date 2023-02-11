@@ -129,15 +129,11 @@ const App = () => {
                 let bottomContinue;
 
                 switch (index) {
-                  case 4:
-                  case 9:
-                  case 14:
-                    topContinue = <span className={`continue-symbol flex flex-center continue-top continue-${index}`}></span>
-                    break;
                   case 5:
                   case 10:
                   case 15:
-                    bottomContinue = <span className={`continue-symbol flex flex-center continue-btm continue-${index}`}></span>
+                    topContinue = <span className={`continue-symbol flex flex-center continue-top continue-${index}`}></span>
+                    bottomContinue = <span className={`continue-symbol flex flex-center continue-btm continue-${index+1}`}></span>
                     break;
                   default:
                     topContinue = null;
