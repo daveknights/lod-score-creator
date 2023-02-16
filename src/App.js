@@ -127,8 +127,8 @@ const App = () => {
                                   </figure>)}
           </div>
           <div className="buttons flex">
-              <button onClick={handleSaveToPdf} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
-              <button onClick={handleClearScore} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Clear</button>
+              <button className="save-pdf" onClick={handleSaveToPdf} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
+              <button className="clear-btn" onClick={handleClearScore} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Clear</button>
             </div>
         </section>
         <div className="score">

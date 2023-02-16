@@ -82,12 +82,34 @@ figure, p {
 }
 
 .buttons {
-  justify-content: space-between;
-  margin-top: 20px;
+  border-top: solid 1px #bbb;
+  padding-top: 5px;
 }
 
 .buttons button {
-  width: calc(33.3333% - 1px);
+  border: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  width: calc(50% - 10px);
+}
+
+.save-pdf {
+  background: #1c94c9;
+  color: white;
+}
+
+.save-pdf:disabled {
+  background: #7aa5b8;
+}
+
+.clear-btn {
+  background: #f49b1a;
+  margin-left: auto;
+}
+
+.clear-btn:disabled {
+  background: #d2af79;
 }
 
 .btn-char-symbol {
@@ -371,6 +393,9 @@ figure, p {
   h1 {
     font-size: 2rem;
   }
+  .symbol-name-toggle {
+    display: none;
+  }
   .symbol-choice-container {
     width: 297px;
   }
@@ -397,6 +422,10 @@ figure, p {
   .btn-name {
     background: #efefef;
     padding: 5px 0;
+  }
+  .buttons {
+    margin-top: 10px;
+    padding-top: 10px;
   }
   .score {
     height: 642px;
@@ -425,10 +454,12 @@ figure, p {
     bottom: 5px;
   }
   .score-symbol {
-    font-size: 5rem;
     height: 75px;
-    line-height: 92px;
     width: 120px;
+  }
+  .score-symbol p {
+    font-size: 5rem;
+    line-height: 92px;
   }
   .continue-symbol {
     height: 20px;
@@ -615,6 +646,13 @@ figure, p {
     font-size: 0.75rem;
     margin-left: 5px;
     width: calc(100% - 40px);
+  }
+  .buttons {
+    background: rgba(0,0,0,0.1);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
   }
   .close {
     width: 38px;
