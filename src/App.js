@@ -114,7 +114,7 @@ const App = () => {
       <main className="flex">
         <section className="app-controls">
           <div className="symbol-choice-container">
-            {Object.entries(symbols).map(([char, symbol]) => <figure className="symbol-btn" key={symbol} onClick={addSymbol}>
+            {Object.entries(symbols).map(([char, symbol]) => <figure className="symbol-btn flex-mob" key={symbol} onClick={addSymbol}>
                                     <Symbol class='btn-char-symbol' name={symbol} character={char} />
                                     <figcaption className='btn-name'>{symbol}</figcaption>
                                   </figure>)}
