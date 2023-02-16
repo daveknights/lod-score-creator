@@ -4,6 +4,7 @@ import jsPDF from 'jspdf';
 import './App.css';
 import Symbol from './Symbol';
 import Message from './Message';
+import chevron from './images/chevron.svg';
 
 const symbols = {
   1: 'Spring',
@@ -24,6 +25,7 @@ const App = () => {
   const [swapKey, setSwapKey] = useState(null);
   const [message, setMessage] = useState('');
   const score = useRef(null);
+  const symbolChoiceContainer = useRef(null);
 
   const finishScoreHandler = useCallback(() => {
     const symbolLength = Object.keys(scoreSymbols).length;
@@ -106,6 +108,8 @@ const App = () => {
     setSwapKey(null);
   }
 
+  const handleToggleSymbolNames = () => symbolChoiceContainer.current.classList.toggle('close');
+
   return (
     <div className="App">
       <header className="App-header">
@@ -113,7 +117,10 @@ const App = () => {
       </header>
       <main className="flex">
         <section className="app-controls">
-          <div className="symbol-choice-container">
+          <div ref={symbolChoiceContainer} className="symbol-choice-container">
+            <button className="symbol-name-toggle" onClick={handleToggleSymbolNames}>
+              <img src={chevron} alt="<" className="chevron" height="18" width="10" />
+            </button>
             {Object.entries(symbols).map(([char, symbol]) => <figure className="symbol-btn flex-mob" key={symbol} onClick={addSymbol}>
                                     <Symbol class='btn-char-symbol' name={symbol} character={char} />
                                     <figcaption className='btn-name'>{symbol}</figcaption>
