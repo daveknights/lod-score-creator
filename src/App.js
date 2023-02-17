@@ -108,7 +108,7 @@ const App = () => {
     setSwapKey(null);
   }
 
-  const handleToggleSymbolNames = () => symbolChoiceContainer.current.classList.toggle('close');
+  const handleToggleSymbolNames = () => symbolChoiceContainer.current.classList.toggle('open');
 
   return (
     <div className="App">
