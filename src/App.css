@@ -23,7 +23,7 @@ h1 {
 
 main {
   margin: 0 auto;
-  max-width: 790px;
+  max-width: 800px;
   position: relative;
 }
 
@@ -80,17 +80,20 @@ figure, p {
   -webkit-box-orient: vertical;
   flex-direction: column;
 }
+.symbol-choice-container {
+  box-shadow: 0 0 7px #777;
+}
 
 .buttons {
   border-top: solid 1px #bbb;
-  padding-top: 5px;
 }
 
 .buttons button {
   border: 0;
+  border-radius: 3px;
   font-size: 1rem;
   font-weight: bold;
-  height: 40px;
+  height: 38px;
   width: calc(50% - 10px);
 }
 
@@ -123,6 +126,7 @@ figure, p {
 
 .btn-name {
   border-top: solid 1px #ddd;
+  font-size: 0.75rem;
   -webkit-transition: width 0.25s, font-size 0.25s linear;
   transition: width 0.25s, font-size 0.25s linear;
 }
@@ -390,38 +394,24 @@ figure, p {
   }
 }
 @media (min-width: 768px) {
+  .App {
+    padding: 0 24px;
+  }
   h1 {
     font-size: 2rem;
   }
   .symbol-name-toggle {
     display: none;
   }
-  .symbol-choice-container {
-    width: 297px;
+   .symbol-choice-container {
+    border: solid 1px #aaa;
+    box-shadow: 2px 3px 7px #ccc;
   }
-  .symbol-btn {
-    border: solid 1px black;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0.5px;
-    text-align: center;
-    width: 96px;
-  }
-  .symbol-btn:hover .btn-name {
-    background: #777;
-    color: white;
-  }
-  .btn-char-symbol {
-    height: 80px;
-  }
-
   .btn-char-symbol p {
-    font-size: 4rem;
-    line-height: 92px;
+    font-size: 2.5rem;
   }
   .btn-name {
-    background: #efefef;
-    padding: 5px 0;
+    padding-left: 20px;
   }
   .buttons {
     margin-top: 10px;
@@ -559,22 +549,68 @@ figure, p {
   .end-symbol.pos-31 {
     bottom: 620px;
   }
+}
+@media (min-width: 860px) {
+  .symbol-choice-container {
+    box-shadow: none;
+    border: 0;
+    width: 297px;
+  }
+  .symbol-btn {
+    border: solid 1px black;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.5px;
+    text-align: center;
+    width: 96px;
+  }
+  .btn-char-symbol {
+    height: 80px;
+  }
+  .btn-char-symbol p {
+    font-size: 4rem;
+    line-height: 92px;
+  }
+  .btn-name {
+    background: #efefef;
+    border-top: solid 1px #ddd;
+    font-size: 0.875rem;
+    padding: 5px 0;
+  }
 
   @supports (display: grid) {
     .symbol-choice-container {
       display: grid;
       grid-gap: 1px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
       grid-template: repeat(3, 1fr) / repeat(3, 1fr);
       width: 296px;
     }
-
     .symbol-btn {
       margin: 0;
     }
   }
 }
-
-@media (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 859px) {
+  .btn-name {
+    font-size: 1rem;
+  }
+  .buttons {
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px 0 0;
+  }
+  .buttons button {
+    width: 100%;
+  }
+  .clear-btn {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 859px) {
   .flex-mob {
     -webkit-display: flex;
     -moz-display: flex;
@@ -611,62 +647,30 @@ figure, p {
     width: auto;
   }
   .symbol-choice-container {
-    background: rgba(225,225,225,0.9);
-    box-shadow: 0 0 7px #777;
-    left: -10px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -webkit-transition: width 0.25s linear;
-    transition: width 0.25s linear;
-    width: 112px;
-  }
-  .symbol-choice-container,
-  .buttons {
-    position: absolute;
-    z-index: 1;
+    background: #ddd;
+    width: 200px;
   }
   .symbol-btn {
-    height: 40px;
-    line-height: 2.5rem;
+    height: 50px;
+    line-height: 3.125rem;
   }
   .symbol-btn + .symbol-btn {
     border-top: solid 1px #777;
   }
   .btn-char-symbol {
-    width: 40px;
+    width: 50px;
   }
   .btn-char-symbol p {
     display: inline-block;
-    padding-top: 3px;
+    padding-top: 4px;
     width: 38px;
   }
   .btn-name {
-    font-size: 0.75rem;
-    margin-left: 5px;
     width: calc(100% - 40px);
   }
   .buttons {
-    background: rgba(0,0,0,0.1);
-    bottom: 0;
-    left: 0;
-    position: fixed;
     width: 100%;
   }
-  .close {
-    width: 38px;
-  }
-  .close .btn-name{
-    font-size: 0;
-    width: 0;
-  }
-  .close .chevron {
-    -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-
 
   @supports not (aspect-ratio: 3 / 4) {
     .score::before {
@@ -680,6 +684,59 @@ figure, p {
       content: "";
       clear: both;
     }
+  }
+}
+@media (max-width: 767px) {
+  main {
+    padding-bottom: 60px;
+  }
+  .symbol-choice-container {
+    position: absolute;
+    z-index: 1;
+  }
+  .symbol-choice-container {
+    background: rgba(225,225,225,0.9);
+    left: -10px;
+    top: calc(50% - 30px);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: width 0.25s linear;
+    transition: width 0.25s linear;
+    width: 112px;
+  }
+  .symbol-btn {
+    height: 40px;
+    line-height: 2.5rem;
+  }
+  .btn-char-symbol {
+    max-width: 40px;
+  }
+  .btn-char-symbol p {
+    padding-top: 3px;
+  }
+  .btn-name {
+    padding-left: 5px;
+  }
+  .close {
+    width: 38px;
+  }
+  .close .btn-name{
+    font-size: 0;
+    width: 0;
+  }
+  .close .chevron {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .buttons {
+    background: rgba(220,220,220,0.8);
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    position: fixed;
+    z-index: 2;
   }
 }
 
