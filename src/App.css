@@ -222,7 +222,8 @@ figure, p {
 .pos-4,
 .pos-5,
 .pos-6,
-.pos-7 {
+.pos-7,
+.end-symbol.pos-8 {
   left: 0;
 }
 .pos-8,
@@ -234,7 +235,8 @@ figure, p {
 .pos-14,
 .pos-15,
 .continue-9,
-.continue-16 {
+.continue-16,
+.end-symbol.pos-16 {
   left: 25%;
 }
 .pos-16,
@@ -246,7 +248,8 @@ figure, p {
 .pos-22,
 .pos-23,
 .continue-17,
-.continue-24 {
+.continue-24,
+.end-symbol.pos-24 {
   left: 50%;
 }
 .pos-24,
@@ -257,7 +260,8 @@ figure, p {
 .pos-29,
 .pos-30,
 .pos-31,
-.continue-25 {
+.continue-25,
+.end-symbol.pos-32 {
   left: 75%;
 }
 .pos-0,
@@ -309,10 +313,10 @@ figure, p {
   bottom: 85.16%;
 }
 .continue-top,
-.end-symbol.pos-7,
-.end-symbol.pos-15,
-.end-symbol.pos-23,
-.end-symbol.pos-31 {
+.end-symbol.pos-8,
+.end-symbol.pos-16,
+.end-symbol.pos-24,
+.end-symbol.pos-32 {
   bottom: 96.88%;
 }
 
@@ -537,10 +541,10 @@ figure, p {
     bottom: 545px;
   }
   .continue-top,
-  .end-symbol.pos-7,
-  .end-symbol.pos-15,
-  .end-symbol.pos-23,
-  .end-symbol.pos-31 {
+  .end-symbol.pos-8,
+  .end-symbol.pos-16,
+  .end-symbol.pos-24,
+  .end-symbol.pos-32 {
     bottom: 620px;
   }
 }

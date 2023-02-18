@@ -28,10 +28,7 @@ const App = () => {
   const symbolChoiceContainer = useRef(null);
 
   const finishScoreHandler = useCallback(() => {
-    const symbolLength = Object.keys(scoreSymbols).length;
-    const endPos = Object.keys(scoreSymbols).length % 8 === 0 ? symbolLength - 1 : symbolLength;
-
-    setEndSymbolPosition(` pos-${endPos}`);
+    setEndSymbolPosition(` pos-${Object.keys(scoreSymbols).length}`);
     setEndScore(true);
   }, [scoreSymbols]);
 
