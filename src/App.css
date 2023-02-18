@@ -174,10 +174,11 @@ figure, p {
 }
 
 .score-symbol {
+  cursor: pointer;
+  height: 11.72%;
   overflow: hidden;
   position: relative;
   text-align: center;
-  height: 11.72%;
   width: 25%;
 }
 
@@ -320,7 +321,6 @@ figure, p {
   background: #f7f7f7;
   color: #10dc;
   cursor: pointer;
-  display: none;
   height: 26px;
   padding: 3px 5px;
   position: absolute;
@@ -334,17 +334,6 @@ figure, p {
 }
 
 .swap-symbol {
-  font-size: 14px;
-  left: 1px;
-  line-height: 10px;
-}
-
-.remove-symbol {
-  line-height: 20px;
-  right: 1px;
-}
-
-.score-symbol:hover .swap-symbol {
   -webkit-display: flex;
   -moz-display: flex;
   -ms-display: flex;
@@ -353,10 +342,15 @@ figure, p {
   display: -ms-flexbox;
   display:-webkit-flex;
   display: flex;
+  font-size: 14px;
+  left: 1px;
+  line-height: 10px;
 }
 
-.score-symbol:hover .remove-symbol {
+.remove-symbol {
   display: block;
+  line-height: 20px;
+  right: 1px;
 }
 
 .message {
@@ -562,7 +556,7 @@ figure, p {
     display: inline-block;
     margin: 0.5px;
     text-align: center;
-    width: 96px;
+    width: 98px;
   }
   .btn-char-symbol {
     height: 80px;
@@ -589,6 +583,7 @@ figure, p {
     }
     .symbol-btn {
       margin: 0;
+      width: 100%;
     }
   }
 }
@@ -723,6 +718,7 @@ figure, p {
     padding-top: 3px;
   }
   .btn-name {
+    font-size: 0;
     padding-left: 5px;
   }
   .open {

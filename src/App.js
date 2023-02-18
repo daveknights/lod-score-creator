@@ -68,11 +68,11 @@ const App = () => {
 
   const handleSwapSymbol =  e => {
     setMessage('Choose a new symbol');
-    setSwapKey(e.target.parentNode.parentNode.id);
+    setSwapKey(e.target.parentNode.parentNode.parentNode.id);
   };
 
   const handleRemoveSymbol = e => {
-    const symbolToRemove = e.target.parentNode.id;
+    const symbolToRemove = e.target.parentNode.parentNode.id;
 
     setScoreSymbols(currentSymbols => {
       const updatedScoreSymbol = {...currentSymbols};
@@ -113,7 +113,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-          <h1>Language Of Dance Score Creator</h1>
+          <h1>LOD Score creator</h1>
       </header>
       <main className="flex">
         <section className="app-controls">
