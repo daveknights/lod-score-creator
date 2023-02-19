@@ -12,11 +12,8 @@ const Symbol = props => {
 
     return <div id={props.id} className={props.class || null} tabIndex="0" onClick={clickClass} onBlur={handleHideSymbolActions}>
                 {showSymbolActions && (<div className="symbol-actions">
-                    {props.options && (<div className="swap-symbol flex column" onClick={props.handleSwapSymbol}>
-                                        <span>&rarr;</span>
-                                        <span>&larr;</span>
-                                    </div>)}
-                    {props.options && <span className="remove-symbol" onClick={props.handleRemoveSymbol}>X</span>}
+                    {props.options && (<span className="swap-symbol" onClick={props.handleSwapSymbol}></span>)}
+                    {props.options && <span className="remove-symbol" onClick={props.handleRemoveSymbol}></span>}
                 </div>)}
                 <p className={pClasses}>{props.character}</p>
             </div>;

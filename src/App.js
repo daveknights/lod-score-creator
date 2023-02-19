@@ -4,7 +4,7 @@ import jsPDF from 'jspdf';
 import './App.css';
 import Symbol from './Symbol';
 import Message from './Message';
-import chevron from './images/chevron.svg';
+import chevron from './images/chevron-icon.svg';
 
 const symbols = {
   1: 'Spring',

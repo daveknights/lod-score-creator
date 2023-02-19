@@ -63,13 +63,11 @@ figure, p {
   -webkit-box-align: center;
   -ms-flex-align:center;
   align-items: center;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  -o-justify-content: space-between;
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
 }
 
 .column {
@@ -188,9 +186,7 @@ figure, p {
 }
 
 .continue-symbol {
-  align-items: center;
   height: 3.12%;
-  justify-content: center;
   width: 25%;
 }
 
@@ -322,39 +318,36 @@ figure, p {
 
 .swap-symbol,
 .remove-symbol {
-  background: #f7f7f7;
-  color: #10dc;
+  background: #f7f7f7 center no-repeat;
   cursor: pointer;
+  display: block;
   height: 26px;
-  padding: 3px 5px;
   position: absolute;
   top: 0;
+  width: 21px;
 }
 
 .swap-symbol:hover,
 .remove-symbol:hover {
-  background: #10dc;
-  color: #f7f7f7;
+  background-color: #10dc;
 }
 
 .swap-symbol {
-  -webkit-display: flex;
-  -moz-display: flex;
-  -ms-display: flex;
-  -o-display: flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display:-webkit-flex;
-  display: flex;
-  font-size: 14px;
+  background-image: url('./images/swap-icon.svg');
   left: 1px;
-  line-height: 10px;
+}
+
+.swap-symbol:hover {
+  background-image: url('./images/swap-icon-hover.svg');
 }
 
 .remove-symbol {
-  display: block;
-  line-height: 20px;
+  background-image: url('./images/remove-icon.svg');
   right: 1px;
+}
+
+.remove-symbol:hover {
+  background-image: url('./images/remove-icon-hover.svg');
 }
 
 .message {
