@@ -38,6 +38,22 @@ const App = () => {
     }
   }, [scoreSymbols, finishScoreHandler]);
 
+  useEffect(() => {
+    const savePDF = async () => {
+      const canvas = await html2canvas(score.current);
+      const data = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+
+      pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
+      pdf.save('lod_score.pdf');
+    };
+
+    endScore && savePDF();
+  }, [endScore]);
+
   const addSymbol = e => {
     if(endScore) {
       return;
@@ -80,19 +96,7 @@ const App = () => {
     });
   };
 
-  const handleSaveToPdf = async () => {
-    finishScoreHandler();
-
-    const canvas = await html2canvas(score.current);
-    const data = canvas.toDataURL('image/png');
-    const pdf = new jsPDF();
-    const imgProperties = pdf.getImageProperties(data);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-
-    pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
-    pdf.save('lod_score.pdf');
-  };
+  const handleClickSavePDF = () => finishScoreHandler();
 
   const handleClearScore = () => {
     setScoreSymbols([]);
@@ -124,7 +128,7 @@ const App = () => {
                                   </figure>)}
           </div>
           <div className="buttons flex">
-              <button className="save-pdf" onClick={handleSaveToPdf} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
+              <button className="save-pdf" onClick={handleClickSavePDF} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
               <button className="clear-btn" onClick={handleClearScore} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Clear</button>
             </div>
         </section>
