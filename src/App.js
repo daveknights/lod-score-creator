@@ -81,7 +81,7 @@ const App = () => {
 
   const handleSwapSymbol =  e => {
     setMessage('Choose a new symbol');
-    setSwapKey(e.target.parentNode.parentNode.parentNode.id);
+    setSwapKey(e.target.parentNode.parentNode.id);
   };
 
   const handleRemoveSymbol = e => {
