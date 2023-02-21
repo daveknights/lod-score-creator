@@ -334,7 +334,7 @@ figure, p {
 
 .swap-symbol:hover,
 .remove-symbol:hover {
-  background-color: #10dc;
+  background-color: #1c94c9;
 }
 
 .swap-symbol {
@@ -357,7 +357,7 @@ figure, p {
 
 .message {
   animation: fadeIn 0.5s forwards;
-  background: #10dc;
+  background: #1c94c9;
   border-radius: 10px;
   box-shadow: 0 5px 10px #777;
   color: white;
