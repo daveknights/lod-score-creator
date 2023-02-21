@@ -122,7 +122,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-          <h1>LOD Score creator</h1>
+          <h1>LOD Score Creator</h1>
       </header>
       <main className="flex">
         <section className="app-controls">
@@ -136,7 +136,7 @@ const App = () => {
                                   </figure>)}
           </div>
           <div className="buttons flex">
-              <button className="save-pdf btn primary-btn" onClick={handleClickSavePDF} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
+              <button className="save-pdf btn primary-btn" onClick={handleClickSavePDF} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Download</button>
               <button className="clear-btn btn" onClick={handleClearScore} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Clear</button>
             </div>
         </section>
