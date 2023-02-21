@@ -5,6 +5,7 @@ import './App.css';
 import Symbol from './Symbol';
 import Message from './Message';
 import chevron from './images/chevron-icon.svg';
+import NamePDF from './NamePDF';
 
 const symbols = {
   1: 'Spring',
@@ -24,12 +25,15 @@ const App = () => {
   const [scoreSymbols, setScoreSymbols] = useState({});
   const [swapKey, setSwapKey] = useState(null);
   const [message, setMessage] = useState('');
+  const [showNamingForm, setShowNamingForm] = useState(false);
+  const [scoreName, setScoreName] = useState('');
   const score = useRef(null);
   const symbolChoiceContainer = useRef(null);
 
   const finishScoreHandler = useCallback(() => {
     setEndSymbolPosition(` pos-${Object.keys(scoreSymbols).length}`);
     setEndScore(true);
+    setShowNamingForm(true);
   }, [scoreSymbols]);
 
   useEffect(() => {
@@ -37,22 +41,6 @@ const App = () => {
       finishScoreHandler();
     }
   }, [scoreSymbols, finishScoreHandler]);
-
-  useEffect(() => {
-    const savePDF = async () => {
-      const canvas = await html2canvas(score.current);
-      const data = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      const imgProperties = pdf.getImageProperties(data);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-
-      pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
-      pdf.save('lod_score.pdf');
-    };
-
-    endScore && savePDF();
-  }, [endScore]);
 
   const addSymbol = e => {
     if(endScore) {
@@ -111,6 +99,28 @@ const App = () => {
 
   const handleToggleSymbolNames = () => symbolChoiceContainer.current.classList.toggle('open');
 
+  const handleSetScoreName = e => setScoreName(e.target.value);
+
+  const handleSaveScore = async e => {
+      e.preventDefault();
+      setShowNamingForm(false);
+
+      const canvas = await html2canvas(score.current);
+      const data = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+      const pdfName = scoreName.trim().toLowerCase().replace(/\s+/g, '-').replace('.', '') || 'lod_score';
+
+      console.log(pdfName);
+
+      pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
+      pdf.save(`${pdfName}.pdf`);
+  };
+
+  const handleCloseNamingForm = () => setShowNamingForm(false);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -128,8 +138,8 @@ const App = () => {
                                   </figure>)}
           </div>
           <div className="buttons flex">
-              <button className="save-pdf" onClick={handleClickSavePDF} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
-              <button className="clear-btn" onClick={handleClearScore} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Clear</button>
+              <button className="save-pdf btn primary-btn" onClick={handleClickSavePDF} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Save PDF</button>
+              <button className="clear-btn btn" onClick={handleClearScore} {... !Object.keys(scoreSymbols).length && {disabled: 'disabled'}}>Clear</button>
             </div>
         </section>
         <div className="score">
@@ -169,6 +179,11 @@ const App = () => {
             {endScore === true && <span className={`flex column end-symbol${endSymbolPosition}`}></span>}
             {message && <Message message={message} handleCancel={handleCancel} />}
           </div>
+          {showNamingForm && <NamePDF
+                          handleSetScoreName={handleSetScoreName}
+                          handleSaveScore={handleSaveScore}
+                          scoreName={scoreName}
+                          handleCloseNamingForm={handleCloseNamingForm} />}
         </div>
       </main>
     </div>
