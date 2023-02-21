@@ -111,9 +111,7 @@ const App = () => {
       const imgProperties = pdf.getImageProperties(data);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-      const pdfName = scoreName.trim().toLowerCase().replace(/\s+/g, '-').replace('.', '') || 'lod_score';
-
-      console.log(pdfName);
+      const pdfName = scoreName.trim().toLowerCase().replace(/\s+/g, '-').replace('.', '') || 'lod-score';
 
       pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
       pdf.save(`${pdfName}.pdf`);
