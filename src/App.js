@@ -75,6 +75,8 @@ const App = () => {
   const handleRemoveSymbol = e => {
     const symbolToRemove = e.target.parentNode.parentNode.id;
 
+    endScore && setEndScore(false);
+
     setScoreSymbols(currentSymbols => {
       const updatedScoreSymbol = {...currentSymbols};
 
