@@ -110,11 +110,13 @@ figure, p {
 
 .clear-btn {
   background: #f49b1a;
+  color: black;
   margin-left: auto;
 }
 
 .clear-btn:disabled {
   background: #d2af79;
+  color: #777;
 }
 
 .btn-char-symbol {
