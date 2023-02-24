@@ -21,7 +21,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "/lod-score-creator",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#343434",
   "background_color": "#ffffff"
