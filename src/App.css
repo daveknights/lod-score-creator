@@ -648,6 +648,12 @@ figure, p {
     }
   }
 }
+@media (min-width: 500px) and (max-width: 767px) {
+  .score-symbol p {
+    font-size: 14vw;
+    line-height: 16.5vw;
+  }
+}
 @media (min-width: 768px) and (max-width: 859px) {
   .btn-name {
     font-size: 1rem;
