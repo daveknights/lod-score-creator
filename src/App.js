@@ -43,7 +43,7 @@ const App = () => {
   }, [scoreSymbols, finishScoreHandler]);
 
   const addSymbol = e => {
-    if(endScore) {
+    if(endScore && !swapKey) {
       return;
     }
 
