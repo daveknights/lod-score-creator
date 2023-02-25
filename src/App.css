@@ -433,11 +433,9 @@ figure, p {
   height: 40px;
 }
 .close-form {
-  cursor: pointer;
-  padding: 12px;
-  position: absolute;
+  background-color: white;
+  padding: 20px;
   right: 0;
-  top: 0;
 }
 @media (min-width: 374px) {
   .score-symbol p {
