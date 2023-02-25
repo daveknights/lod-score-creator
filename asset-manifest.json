@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/lod-score-creator/static/css/main.081f0e81.css",
-    "main.js": "/lod-score-creator/static/js/main.cb625a17.js",
+    "main.css": "/lod-score-creator/static/css/main.14db8656.css",
+    "main.js": "/lod-score-creator/static/js/main.43fabed0.js",
     "static/js/703.98a00107.chunk.js": "/lod-score-creator/static/js/703.98a00107.chunk.js",
     "static/js/825.8b20fdf3.chunk.js": "/lod-score-creator/static/js/825.8b20fdf3.chunk.js",
     "service-worker.js": "/lod-score-creator/service-worker.js",
     "static/media/HutchinsonGuest.woff2": "/lod-score-creator/static/media/HutchinsonGuest.2bfd53cc3bd550208e85.woff2",
     "index.html": "/lod-score-creator/index.html",
-    "static/media/swap-icon-hover.svg": "/lod-score-creator/static/media/swap-icon-hover.71522cf20a21d809f444.svg",
-    "static/media/swap-icon.svg": "/lod-score-creator/static/media/swap-icon.5bfb0c5470a4b0151025.svg",
-    "static/media/remove-icon.svg": "/lod-score-creator/static/media/remove-icon.15a11eb1ea8d1820f1ceb826cfcb785d.svg",
-    "static/media/remove-icon-hover.svg": "/lod-score-creator/static/media/remove-icon-hover.e34b3f800f6078734774.svg",
+    "static/media/swap-icon.svg": "/lod-score-creator/static/media/swap-icon.717130127b5410124d2f.svg",
+    "static/media/swap-icon-hover.svg": "/lod-score-creator/static/media/swap-icon-hover.36962ccd72634a885c47.svg",
+    "static/media/remove-icon.svg": "/lod-score-creator/static/media/remove-icon.705c3fb5e67024a75d47.svg",
+    "static/media/remove-icon-hover.svg": "/lod-score-creator/static/media/remove-icon-hover.75bfb76808c9dd9ac519.svg",
     "static/media/chevron-icon.svg": "/lod-score-creator/static/media/chevron-icon.bc7895aaa3da0a2ffca27a4412f24fa9.svg",
-    "main.081f0e81.css.map": "/lod-score-creator/static/css/main.081f0e81.css.map",
-    "main.cb625a17.js.map": "/lod-score-creator/static/js/main.cb625a17.js.map",
+    "main.14db8656.css.map": "/lod-score-creator/static/css/main.14db8656.css.map",
+    "main.43fabed0.js.map": "/lod-score-creator/static/js/main.43fabed0.js.map",
     "703.98a00107.chunk.js.map": "/lod-score-creator/static/js/703.98a00107.chunk.js.map",
     "825.8b20fdf3.chunk.js.map": "/lod-score-creator/static/js/825.8b20fdf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.081f0e81.css",
-    "static/js/main.cb625a17.js"
+    "static/css/main.14db8656.css",
+    "static/js/main.43fabed0.js"
   ]
 }
