@@ -14,10 +14,10 @@ code {
 
 @font-face {
   font-family: 'HutchinsonGuest';
-  src: url('./fonts/HutchinsonGuest.woff2') format('woff2');
-  /* url("../font/HutchinsonGuest.woff") format("woff"); */
+  src: url('./fonts/HutchinsonGuest.woff2') format('woff2'),
+  url("./fonts/HutchinsonGuest.woff") format("woff");
   font-display: swap;
   text-rendering: optimizeLegibility;
   font-style: normal;
-  font-weight: normal;  
+  font-weight: normal;
 }
