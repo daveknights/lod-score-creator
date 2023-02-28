@@ -119,6 +119,10 @@ figure, p {
   color: #777;
 }
 
+.symbol-btn {
+  height: 38px;
+}
+
 .btn-char-symbol {
   background: white;
   text-align: center;
@@ -126,6 +130,7 @@ figure, p {
 
 .btn-char-symbol p {
   font-size: 2rem;
+  padding-top: 3px;
 }
 
 .btn-name {
@@ -437,7 +442,20 @@ figure, p {
   padding: 20px;
   right: 0;
 }
-@media (min-width: 374px) {
+@media (min-width: 360px) {
+  .symbol-btn {
+    height: 42px;
+  }
+
+  .btn-char-symbol p {
+    padding-top: 4px;
+  }
+}
+@media (min-width: 375px) {
+  .symbol-btn {
+    height: 44px;
+  }
+
   .score-symbol p {
     font-size: 3.5rem;
     line-height: 68px;
@@ -456,6 +474,9 @@ figure, p {
    .symbol-choice-container {
     border: solid 1px #aaa;
     box-shadow: 2px 3px 7px #ccc;
+  }
+  .symbol-btn {
+    height: 50px;
   }
   .btn-char-symbol p {
     font-size: 2.5rem;
@@ -613,6 +634,7 @@ figure, p {
     border: solid 1px black;
     cursor: pointer;
     display: inline-block;
+    height: 110px;
     margin: 0.5px;
     text-align: center;
     width: 98px;
@@ -623,6 +645,7 @@ figure, p {
   .btn-char-symbol p {
     font-size: 4rem;
     line-height: 92px;
+    padding-top: 0;
   }
   .btn-name {
     background: #efefef;
@@ -711,7 +734,6 @@ figure, p {
     width: 200px;
   }
   .symbol-btn {
-    height: 50px;
     line-height: 3.125rem;
   }
   .symbol-btn + .symbol-btn {
@@ -722,7 +744,6 @@ figure, p {
   }
   .btn-char-symbol p {
     display: inline-block;
-    padding-top: 4px;
     width: 38px;
   }
   .btn-name {
@@ -773,14 +794,10 @@ figure, p {
     width: 38px;
   }
   .symbol-btn {
-    height: 40px;
     line-height: 2.5rem;
   }
   .btn-char-symbol {
     max-width: 40px;
-  }
-  .btn-char-symbol p {
-    padding-top: 3px;
   }
   .btn-name {
     font-size: 0;
