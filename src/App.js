@@ -73,6 +73,8 @@ const App = () => {
     setShowNamingForm(true);
   }
 
+  const uid = position => Math.floor(Math.random() * 1000000) + position;
+
   const addSymbol = e => {
     if(!swapKey && pageSymbolCount === 32) {
       return;
@@ -87,7 +89,7 @@ const App = () => {
       setSwapKey(null);
       setMessage('');
     } else {
-      key = [`${name.toLowerCase()}-pos-${Object.keys(scoreSymbols).length}-${pageNum}`];
+      key = [`${name.toLowerCase()}-${uid(Object.keys(scoreSymbols).length)}`];
     }
 
     setScoreSymbols(currentSymbols => ({
