@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useState, useRef } from 'react';
+import { Fragment, useState, useRef, useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import './App.css';
@@ -19,7 +19,8 @@ const symbols = {
   8: 'Fall',
   9: 'Stillness'
 };
-// let pageSymbolCount;
+let pdf = null
+let pdfName = 'lod-score';
 
 const App = () => {
   const [endScore, setEndScore] = useState(false);
@@ -32,14 +33,43 @@ const App = () => {
   const [message, setMessage] = useState('');
   const [showNamingForm, setShowNamingForm] = useState(false);
   const [scoreName, setScoreName] = useState('');
+  const [createPDF, setCreatePDF] = useState(false);
   const score = useRef(null);
   const symbolChoiceContainer = useRef(null);
 
-  const finishScoreHandler = useCallback(() => {
-    setEndSymbolPosition(` pos-${pageSymbolCount}`);
-    setEndScore(true);
-    setShowNamingForm(true);
-  }, [pageSymbolCount]);
+  useEffect (() => {
+    if (createPDF) {
+      const createPage = async () => {
+        const canvas = await html2canvas(score.current);
+        const data = canvas.toDataURL('image/png');
+        const imgProperties = pdf.getImageProperties(data);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+
+        pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
+
+        if(pageNum < pageCount) {
+          setPageNum(pageNum => pageNum + 1);
+          pdf.addPage();
+        } else {
+          endSymbolPosition === null && setEndSymbolPosition(` pos-${pageSymbolCount}`);
+          endScore === false && setEndScore(true);
+          pdfName = scoreName.trim().toLowerCase().replace(/\s+/g, '-').replace('.', '');
+
+          setCreatePDF(false);
+        }
+      }
+
+      createPage();
+    }
+
+    if (endScore && createPDF === false && pdf !== null) {
+      pdf.save(`${pdfName}.pdf`);
+      pdf = null;
+    }
+  }, [createPDF, endScore, endSymbolPosition, pageCount, pageNum, pageSymbolCount, scoreName]);
+
+  const finishScoreHandler = () => setShowNamingForm(true);
 
   const addSymbol = e => {
     if(!swapKey && pageSymbolCount === 32) {
@@ -92,6 +122,11 @@ const App = () => {
   const handleClearScore = () => {
     setScoreSymbols({});
     setEndSymbolPosition(null);
+    setPageCount(1);
+    setEndScore(false);
+    setPageNum(1);
+    setPageSymbolCount(0);
+    setScoreName('');
   };
 
   const handleCancel = () => {
@@ -112,26 +147,20 @@ const App = () => {
   };
 
   const handlePagination = e => {
-    e.target.textContent === 'Next' ? setPageNum(pagenNum => pageNum + 1) : setPageNum(pagenNum => pageNum - 1);
+    e.target.textContent === 'Next' ? setPageNum(pageNum => pageNum + 1) : setPageNum(pageNum => pageNum - 1);
   };
 
   const handleSetScoreName = e => setScoreName(e.target.value);
 
-  const handleSaveScore = async e => {
-      e.preventDefault();
-      setShowNamingForm(false);
+  const handleSaveScore = e => {
+    e.preventDefault();
 
-      const canvas = await html2canvas(score.current);
-      const data = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      const imgProperties = pdf.getImageProperties(data);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-      const pdfName = scoreName.trim().toLowerCase().replace(/\s+/g, '-').replace('.', '') || 'lod-score';
+    setPageNum(1);
+    setCreatePDF(true);
+    setShowNamingForm(false);
 
-      pdf.addImage(data, 'PNG', 0, 8, pdfWidth, pdfHeight);
-      pdf.save(`${pdfName}.pdf`);
-  };
+    pdf = new jsPDF();
+  }
 
   const handleCloseNamingForm = () => {
     setShowNamingForm(false);
@@ -211,7 +240,7 @@ const App = () => {
                           </Fragment>;
                 })
               }
-              {endScore === true && <span className={`flex column end-symbol${endSymbolPosition}`}></span>}
+              {(endScore === true && pageNum === pageCount) && <span className={`flex column end-symbol${endSymbolPosition}`}></span>}
               {(pageCount > pageNum && pageSymbolCount === 32) &&
                 <span className={`continue-symbol flex flex-center continue-top continue-32`}></span>}
               {message && <Message message={message} handleCancel={handleCancel} />}

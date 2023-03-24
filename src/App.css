@@ -113,7 +113,8 @@ figure, p {
   background: #f37c63;
 }
 
-.primary-btn:disabled {
+.primary-btn:disabled,
+.primary-btn:disabled:hover {
   background: #d9998c;
 }
 
@@ -125,7 +126,8 @@ figure, p {
   background: #499797;
 }
 
-.secondary-btn:disabled {
+.secondary-btn:disabled,
+.secondary-btn:disabled:hover {
   background: #8aa8a8;
 }
 
