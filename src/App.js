@@ -52,8 +52,6 @@ const App = () => {
           setPageNum(pageNum => pageNum + 1);
           pdf.addPage();
         } else {
-          endSymbolPosition === null && setEndSymbolPosition(` pos-${pageSymbolCount}`);
-          endScore === false && setEndScore(true);
           pdfName = scoreName.trim().toLowerCase().replace(/\s+/g, '-').replace('.', '');
 
           setCreatePDF(false);
@@ -63,13 +61,17 @@ const App = () => {
       createPage();
     }
 
-    if (endScore && createPDF === false && pdf !== null) {
+    if (createPDF === false && pdf !== null) {
       pdf.save(`${pdfName}.pdf`);
       pdf = null;
     }
-  }, [createPDF, endScore, endSymbolPosition, pageCount, pageNum, pageSymbolCount, scoreName]);
+  }, [createPDF, pageCount, pageNum, scoreName]);
 
-  const finishScoreHandler = () => setShowNamingForm(true);
+  const finishScoreHandler = () => {
+    setEndSymbolPosition(` pos-${pageSymbolCount}`);
+    setEndScore(true);
+    setShowNamingForm(true);
+  }
 
   const addSymbol = e => {
     if(!swapKey && pageSymbolCount === 32) {
